@@ -1,0 +1,354 @@
+---
+import { projects } from '../data/site'
+---
+
+<section id="projects" class="s-projects">
+  <div class="s__inner">
+    <h2 class="s__title">Projects</h2>
+
+    <ol class="s__list">
+      {
+        projects.map((project, index) => (
+          <li class="s__card" data-intersect>
+            <a
+              class:list={[
+                's__media',
+                project.portrait && 's__media--phones',
+              ]}
+              href={project.live}
+              target="_blank"
+              rel="noopener"
+              aria-label={`Open ${project.title} live`}
+            >
+              {project.portrait ? (
+                project.shotUrls.slice(0, 3).map((shot) => (
+                  <img
+                    class="s__phone"
+                    src={shot.src}
+                    alt={`${project.title} – ${shot.caption}`}
+                    width="720"
+                    height="1280"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ))
+              ) : (
+                <img
+                  class="s__shot"
+                  src={project.shotUrls[0].src}
+                  alt={`${project.title} – ${project.shotUrls[0].caption}`}
+                  width="1280"
+                  height="800"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+            </a>
+
+            <div class="s__body">
+              <p class="s__meta">
+                <span class="s__index">{String(index + 1).padStart(2, '0')}</span>
+                <span class="s__kind">{project.kind}</span>
+              </p>
+
+              <h3 class="s__name">{project.title}</h3>
+
+              <p class="s__text">{project.description}</p>
+
+              <ul class="s__stack">
+                {project.stack.map((item) => <li>{item}</li>)}
+              </ul>
+
+              <div class="s__actions">
+                <a
+                  class="s__button s__button--primary"
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Live →
+                </a>
+                <a
+                  class="s__button"
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  GitHub →
+                </a>
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style lang="scss">
+  .s-projects {
+    position: relative;
+    z-index: 3;
+
+    padding: 12rem 1.5rem;
+
+    background: var(--color-primary);
+  }
+
+  .s-projects .s__inner {
+    margin: 0 auto;
+    max-width: 84rem;
+
+    border: 1px solid var(--color-line);
+  }
+
+  .s-projects .s__title {
+    margin: 0;
+    padding: 0 0 2px;
+
+    background: var(--color-secondary);
+
+    color: var(--color-primary);
+    font: 700 12px / 24px var(--font-family-fraktion);
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .s-projects .s__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  .s-projects .s__card {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0;
+    min-width: 0;
+
+    border-right: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+
+    transition:
+      opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+      transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .s-projects .s__card:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .s-projects .s__card:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+
+  .s-projects .s__card.is-out-of-view {
+    opacity: 0;
+    transform: translate3d(0, 2rem, 0);
+  }
+
+  /* Media ------------------------------------------------------------- */
+  .s-projects .s__media {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+
+    aspect-ratio: 16 / 10;
+    padding: 1rem;
+
+    background: var(--color-frame);
+    border-bottom: 1px solid var(--color-line);
+    overflow: hidden;
+  }
+
+  .s-projects .s__shot {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .s-projects .s__phone {
+    display: block;
+
+    flex: 0 1 auto;
+    height: 100%;
+    max-width: 32%;
+
+    object-fit: contain;
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .s-projects .s__media:hover .s__shot,
+  .s-projects .s__media:hover .s__phone {
+    transform: scale(1.03);
+  }
+
+  /* Body -------------------------------------------------------------- */
+  .s-projects .s__body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    padding: 2rem 2rem 2.25rem;
+  }
+
+  .s-projects .s__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    margin: 0 0 1rem;
+
+    color: var(--color-muted);
+    font: 400 12px / 1 var(--font-family-fraktion);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .s-projects .s__index {
+    padding: 0.35em 0.6em;
+
+    background: var(--color-secondary);
+
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .s-projects .s__name {
+    margin: 0 0 1rem;
+
+    color: var(--color-text);
+    font: 700 3.25rem / 0.9 var(--font-family-bigger);
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+
+  .s-projects .s__text {
+    margin: 0 0 1.5rem;
+
+    color: var(--color-text);
+    font: 200 1.35rem / 1.4 var(--font-family-editorial);
+  }
+
+  .s-projects .s__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    margin: 0 0 2rem;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  .s-projects .s__stack li {
+    margin: 0;
+    padding: 0.5em 0.75em;
+
+    border: 1px solid var(--color-line);
+
+    color: var(--color-text);
+    font: 400 11px / 1 var(--font-family-fraktion);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .s-projects .s__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+
+    margin-top: auto;
+  }
+
+  .s-projects .s__button {
+    display: inline-block;
+    padding: 1em 1.4em;
+
+    border: 1px solid var(--color-secondary);
+
+    color: var(--color-secondary);
+    font: 700 13px / 1 var(--font-family-fraktion);
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .s-projects .s__button--primary {
+    background: var(--color-secondary);
+
+    color: var(--color-primary);
+  }
+
+  .s-projects .s__button:hover {
+    background: var(--color-text);
+    border-color: var(--color-text);
+
+    color: var(--color-primary);
+  }
+
+  /* Responsive -------------------------------------------------------- */
+  @media only screen and (max-width: 1080px) {
+    .s-projects .s__name {
+      font-size: 2.75rem;
+    }
+  }
+
+  @media only screen and (max-width: 987px) {
+    .s-projects {
+      padding: 8rem 1rem;
+    }
+
+    .s-projects .s__list {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .s-projects .s__card,
+    .s-projects .s__card:nth-child(2n) {
+      border-right: 0;
+    }
+
+    .s-projects .s__card:nth-last-child(-n + 2) {
+      border-bottom: 1px solid var(--color-line);
+    }
+
+    .s-projects .s__card:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  @media only screen and (max-width: 576px) {
+    .s-projects {
+      padding: 6rem 0.5rem;
+    }
+
+    .s-projects .s__body {
+      padding: 1.5rem 1.25rem 1.75rem;
+    }
+
+    .s-projects .s__name {
+      font-size: 2.5rem;
+    }
+
+    .s-projects .s__text {
+      font-size: 1.2rem;
+    }
+  }
+</style>

@@ -1,0 +1,43 @@
+/**
+ * Colors variables
+ *
+ * Roles
+ *  primary   : page background
+ *  secondary : main accent (cyan): key highlights, filled blocks, wave lines, buttons
+ *  accent    : cyan that always stays cyan (used on dark panels in both themes)
+ *  line      : thin borders and dividers
+ *  text      : main text
+ *  muted     : small/secondary text (tickers, captions)
+ *  frame     : outer frame + darkest panels
+ *  shadow    : depth shading
+ *  white     : text on top of filled blocks
+ */
+@use 'sass:map';
+
+$theme-colors: (
+  // Dark teal + cyan (default)
+  default: (
+    primary: #062b2f,
+    secondary: #00d9d9,
+    accent: #00d9d9,
+    line: #0f6b70,
+    text: #f2f7f5,
+    muted: #8faead,
+    frame: #031a1d,
+    shadow: #0a4a50,
+    white: #f2f7f5,
+  ),
+
+  // Light variant (contrast toggle)
+  contrasted: (
+    primary: #f2f7f5,
+    secondary: #062b2f,
+    accent: #00d9d9,
+    line: #0f6b70,
+    text: #062b2f,
+    muted: #4d7a7b,
+    frame: #062b2f,
+    shadow: #3d6466,
+    white: #f2f7f5,
+  ),
+);

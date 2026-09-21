@@ -1,52 +1,54 @@
 # Ilham Shehzadi Jamil – Portfolio
 
-Personal portfolio built with [Astro](https://astro.build), GSAP and Lenis.
+Portfolio of **Ilham Shehzadi Jamil**, a full stack developer from Gujranwala, Pakistan, building AI-integrated web and mobile applications.
 
-## Run it locally
+**Live site:** https://ilham-portfolio-two.vercel.app
 
-Requires Node.js 20 or newer.
+## About
+
+I design and build web and mobile applications that are fast, reliable, and easy to use, from the interface to the systems behind it and deployment. I'm currently completing a Bachelor's degree in Computer Science at GIFT University.
+
+## Featured projects
+
+| Project | Description | Live | Code |
+|---|---|---|---|
+| Blood Donor Finder | Mobile app connecting blood donors with people in urgent need | [Live](https://blood-donor-app-six.vercel.app) | [GitHub](https://github.com/jameel99117-web/blood-donor-app) |
+| Airline Reservation System | Role-based flight booking platform with analytics and loyalty rewards | [Live](https://airplane-reservation-management-sys.vercel.app/) | [GitHub](https://github.com/jameel99117-web/Airplane-Reservation-Management-System) |
+| Virtual Wardrobe | Digitize your closet, plan outfits on a calendar, get weather-based looks | [Live](https://wardrobe-j46j-vert.vercel.app/) | [GitHub](https://github.com/jameel99117-web/Virtual-Wardrobe-Web-App) |
+| Glamour Gallery | Beauty and fashion store with cart, accounts, reviews and an admin dashboard | [Live](https://ecommerce-website-green-three.vercel.app/) | [GitHub](https://github.com/jameel99117-web/ecommerce-website) |
+
+## Certificates
+
+- NASA International Space Apps Challenge 2025 – Galactic Problem Solver
+- One Million Prompters – Prompt Engineering for AI (Dubai Future Foundation)
+- Code & Create Project Display 2026 – Mobile App Development (GIFT University)
+- InnovateX Hackathon 2024 – Code Sprint (Brackets × GIFT University)
+
+## Built with
+
+[Astro](https://astro.build), SCSS, GSAP, and Lenis. Deployed on [Vercel](https://vercel.com).
+
+## Run locally
 
 ```bash
+git clone https://github.com/jameel99117-web/ilham-portfolio.git
+cd ilham-portfolio
 npm install
 npm run dev
 ```
 
-Open the address shown in the terminal (usually http://localhost:4321).
+Then open http://localhost:4321. To create a production build, run `npm run build`.
 
-> Windows tip: keep the folder path short (for example `D:\portfolio`) and do not
-> run `npm install` inside OneDrive. Very long paths make `npm install` fail with
-> `TAR_ENTRY_ERROR` and then `astro is not recognized`.
-> If that already happened, delete the `node_modules` folder and run `npm install` again.
+## Contact
 
-Build for production with `npm run build` (output goes to `dist/`).
-The site is static, so it deploys to Vercel, Netlify or GitHub Pages as-is.
+- Email: jameel99117@gmail.com
+- LinkedIn: https://linkedin.com/in/ilham-shehzadi-jamil
+- GitHub: https://github.com/jameel99117-web
 
-## What to edit
+## Credits and license
 
-Almost everything lives in **`src/data/site.js`**:
+This site is based on the open-source [AW 2025 Portfolio](https://github.com/AntoineW/AW-2025-Portfolio) by Antoine Wodniack, licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
 
-| What | Where |
-| --- | --- |
-| Name, email, GitHub, LinkedIn | `profile` |
-| "Hire me" link in the header (switch to Upwork later) | `profile.hireUrl` |
-| Projects: text, stack, live link, GitHub link, screenshots | `projects` |
-| Certificates shown in the About section | `certificates` |
-| The three big skill tiles | `skills` |
+Changes made: new color scheme (dark teal and cyan), new content, projects, and certificates, and a new logo. Fonts are included from the original repository; please check their licenses before any commercial use.
 
-Other text lives in these components:
-
-* `src/components/SAbout.astro` – About paragraphs
-* `src/components/SHero.astro` – hero headline and the two strips
-* `src/components/SiteHead.astro` – header line and typing messages
-* `src/components/SMyWay.astro` – the "WRITE / CLEAN / SHIP / OFTEN" section
-
-### Screenshots
-
-Screenshots are loaded straight from your GitHub repos, so if you rename a repo or
-move a file, update it in `src/data/site.js`.
-To host them yourself instead, run `npm run screenshots` (downloads them into
-`public/screenshots`) and set `SELF_HOST = true` in `src/data/site.js`.
-
-### Colours
-
-Theme colours are in `src/styles/variables-scss/_colors.scss`.
+This project is for non-commercial use only. See `LICENSE.md`.
